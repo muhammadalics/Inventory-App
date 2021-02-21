@@ -50,25 +50,39 @@ app.delete('/api/products/:id', async (req, res)=>{
 
 //POST a new product
 
-app.post('/api/products', async (req, res)=>{
-    // const product = await model.getProductById(req.params.id)
-
-    const body = req.body
-    console.log(body)
+app.post('/api/products', async (req, res)=>{   
+    const body = req.body    
     const product = await model.getProductById(body.id)
 
     if (!product){
         model.postProduct(req.body)
-        res.send(product)
+        res.status(200).send("New product created.")
     }   
     else{        
-        res.status(400).send(`Product of id ${req.params.id} already exists.`)
+        res.status(400).send(`Product of id ${body.id} already exists.`)
     }   
 })
 
 
 
 
+//update a new product
+
+app.put('/api/products', async (req, res)=>{   
+    const body = req.body    
+    const product = await model.getProductById(body.id)
+
+    if (!product){
+        //model.postProduct(req.body)
+        res.status(404).send("Product not found.")
+    }   
+    else{        
+        const product = await model.getProductById(body.id)
+        model.deleteProductById(product)
+        model.postProduct(req.body)
+        res.status(200).send("Product updated!")
+    }   
+})
 
 app.listen(5000, ()=>{
     console.log(`Listening on port: ${port}`)
