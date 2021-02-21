@@ -23,8 +23,14 @@ function deleteProductById(item){
     console.log(products[index]);
 }
 
+function postProduct(body){
+    products.push(body)
+}
+
+
 module.exports = {
     getAllProducts,
     getProductById,
-    deleteProductById
+    deleteProductById,
+    postProduct
 }
