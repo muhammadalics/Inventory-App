@@ -7,8 +7,17 @@
         "material": "PVC",
         "weight": "light"      
 
-    }
+    },
 
+    {
+        "id":"2",
+        "department": "plumbing",
+        "name": "180-degree elbow",
+        "size": "medium",
+        "material": "Steel",
+        "weight": "heavy"      
+
+    }
 
     
 ]

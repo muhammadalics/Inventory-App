@@ -9,16 +9,44 @@ app.get('/', (req, res)=>{
         res.send('Hello World!!!')
 })
 
-app.get('/products', async (req, res)=>{
+app.get('/api/products', async (req, res)=>{
     const products = await model.getAllProducts()
     res.send(products)
    
 })
 
-app.get('/products/:id', async (req, res)=>{
+app.get('/api/products/:id', async (req, res)=>{   
     const product = await model.getProductById(req.params.id)
-    res.send(product)
+    
+    if (!product){
+        res.status(404).send('Not Found')
+    }   
+    else{
+        res.send(product)
+    }   
+
 })
+
+
+
+app.delete('/api/products/:id', async (req, res)=>{
+    const product = await model.getProductById(req.params.id)
+
+    if (!product){
+        res.status(404).send('Not Found')
+    }   
+    else{        
+        res.send(product)
+        model.deleteProductById(product)
+    }   
+
+
+
+})
+
+
+
+
 
 
 

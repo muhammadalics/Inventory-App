@@ -15,8 +15,16 @@ function getProductById(id){
     })
 }
 
+function deleteProductById(item){
+    const index = products.indexOf(item)
+    // console.log(index);
+    // console.log(products[index]);
+    products.splice(index, 1);
+    console.log(products[index]);
+}
 
 module.exports = {
     getAllProducts,
-    getProductById
+    getProductById,
+    deleteProductById
 }
