@@ -5,10 +5,29 @@ const app = express();
 // const mongoose = require('mongoose');
 const mongoose = require('mongodb').MongoClient;
 // const url = 'mongodb://localhost/inventorydb' 
-mongoose.connect("mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology: true})
-const con = mongoose.connection
+// mongoose.connect("mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology: true})
+// const con = mongoose.connection
 // con.on('open', () => 
 // {console.log('connected!')})
+
+const uri = "mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+
+
+
+
+
+
+
+
+
+
 const Inventory = require('./inventory')
 
 
