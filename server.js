@@ -3,7 +3,7 @@ const app = express();
 
 // const mongoose = require('mongoose');
 const mongoose = require('mongodb').MongoClient;
-const url = 'mongodb://localhost/inventorydb' 
+// const url = 'mongodb://localhost/inventorydb' 
 mongoose.connect("mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology: true})
 const con = mongoose.connection
 // con.on('open', () => 
@@ -14,7 +14,7 @@ const Inventory = require('./inventory')
 const model = require('./model')
 const bodyParser = require('body-parser');
 
-const port = process.env.port || 5000 
+const port = process.env.port 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ app.use(bodyParser.raw());
 
 
 
-//GET all products
+//GET all products-
 app.get('/api/products', async (req, res)=>{
     const products = await Inventory.find()    
     res.json(products)
