@@ -6,8 +6,8 @@ const mongoose = require('mongodb').MongoClient;
 const url = 'mongodb://localhost/inventorydb' 
 mongoose.connect("mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology: true})
 const con = mongoose.connection
-con.on('open', () => 
-{console.log('connected!')})
+// con.on('open', () => 
+// {console.log('connected!')})
 const Inventory = require('./inventory')
 
 
