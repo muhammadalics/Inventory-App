@@ -1,4 +1,4 @@
-const port = process.env.port 
+const PORT = process.env.PORT 
 const express = require('express');
 const app = express();
 
@@ -155,8 +155,8 @@ app.put('/api/products', async (req, res)=>{
     }   
 })
 
-app.listen(port, ()=>{
-    console.log(`Listening on port: ${port}`)
+app.listen(PORT, ()=>{
+    console.log(`Listening on port: ${PORT}`)
 })
 
 
