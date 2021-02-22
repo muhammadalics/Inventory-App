@@ -1,3 +1,4 @@
+const port = process.env.port 
 const express = require('express');
 const app = express();
 
@@ -14,7 +15,7 @@ const Inventory = require('./inventory')
 const model = require('./model')
 const bodyParser = require('body-parser');
 
-const port = process.env.port 
+// const port = process.env.port 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
