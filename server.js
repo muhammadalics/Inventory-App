@@ -3,7 +3,7 @@ const app = express();
 
 const mongoose = require('mongoose');
 const url = 'mongodb://localhost/inventorydb' 
-mongoose.connect(process.env.MONGODB_URI || url, {useNewUrlParser:true})
+mongoose.connect(mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority || url, {useNewUrlParser:true})
 const con = mongoose.connection
 con.on('open', () => 
 {console.log('connected!')})
