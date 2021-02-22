@@ -74,7 +74,8 @@ app.post('/api/products', async (req, res)=>{
         const newProduct = await product.save()
         res.json(newProduct)
     }catch(err){
-        res.send("Error: Could notsave new product")
+        res.send("Error: Could notsave new product");
+        throw err;
     }
 
 })
