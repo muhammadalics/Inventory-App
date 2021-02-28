@@ -1,9 +1,11 @@
-const PORT = process.env.PORT 
+const PORT = process.env.PORT | 5000;
 const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology: true})
+//const url = "mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority"
+const url = "mongodb://localhost/"
+mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
 const con = mongoose.connection
 con.on('open', () => {console.log('connected!')})
 
@@ -109,18 +111,44 @@ app.post('/api/products', async (req, res)=>{
 //     }   
 // })
 
+// //Delete a product by id.
+// app.delete('/api/products/:id', async (req, res)=>{
+//     const product = await model.getProductById(req.params.id)
+
+//     if (!product){
+//         res.status(404).send('Not Found')
+//     }   
+//     else{        
+//         res.send(product)
+//         model.deleteProductById(product)
+//     }   
+// })
+
+
 //Delete a product by id.
 app.delete('/api/products/:id', async (req, res)=>{
-    const product = await model.getProductById(req.params.id)
+    const product = await Inventory.findById(req.params.id)
 
+    console.log(product)
     if (!product){
         res.status(404).send('Not Found')
     }   
     else{        
         res.send(product)
-        model.deleteProductById(product)
+        // model.deleteProductById(product)
+        Inventory.deleteOne({_id: req.params.id}, function (err) {
+            if (err) return handleError(err);
+            // deleted at most one tank document
+          });
     }   
 })
+
+
+
+
+
+
+
 
 // //POST a new product
 // app.post('/api/products', async (req, res)=>{   
