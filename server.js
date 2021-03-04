@@ -5,21 +5,22 @@ const app = express();
 
 //https://daveceddia.com/access-control-allow-origin-cors-errors-in-react-express/
 // Set up a whitelist and check against it:
-var whitelist = ['https://muhammadalics.github.io/React-Inventory-frontend', 'https://muhammadalics.github.io/', 
-                  'https://muhammadalics.github.io/React-Inventory-frontend/', 'https://muhammadalics.github.io']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// var whitelist = ['https://muhammadalics.github.io/React-Inventory-frontend', 'https://muhammadalics.github.io/', 
+//                   'https://muhammadalics.github.io/React-Inventory-frontend/', 'https://muhammadalics.github.io']
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
-// Then pass them to cors:
-app.use(cors(corsOptions));
+// // Then pass them to cors:
+// app.use(cors(corsOptions));
 
+app.use(cors());
 
 
 
