@@ -3,6 +3,28 @@ const express = require('express');
 var cors = require('cors');
 const app = express();
 
+//https://daveceddia.com/access-control-allow-origin-cors-errors-in-react-express/
+// Set up a whitelist and check against it:
+var whitelist = ['https://muhammadalics.github.io/React-Inventory-frontend', 'https://muhammadalics.github.io/', 
+                  'https://muhammadalics.github.io/React-Inventory-frontend/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+// Then pass them to cors:
+app.use(cors(corsOptions));
+
+
+
+
+
+
 const mongoose = require('mongoose');
 const url = "mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority"
 // const url = "mongodb://localhost/"
@@ -20,22 +42,7 @@ con.on('open', () => { console.log('connected!') })
 // });
 
 
-//https://daveceddia.com/access-control-allow-origin-cors-errors-in-react-express/
-// Set up a whitelist and check against it:
-var whitelist = ['https://muhammadalics.github.io/React-Inventory-frontend', 'https://muhammadalics.github.io/', 
-                  'https://muhammadalics.github.io/React-Inventory-frontend/']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
 
-// Then pass them to cors:
-app.use(cors(corsOptions));
 
 
 
