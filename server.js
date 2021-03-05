@@ -1,10 +1,10 @@
 const PORT = process.env.PORT || 5000;
 const express = require('express');
+
+//Comment this in DEV :::
 var cors = require('cors');
-
-
-//https://daveceddia.com/access-control-allow-origin-cors-errors-in-react-express/
-// Set up a whitelist and check against it:
+// //cors docs:
+// // Set up a whitelist and check against it:
 var whitelist = ['https://muhammadalics.github.io/React-Inventory-frontend', 'https://muhammadalics.github.io/', 
                   'https://muhammadalics.github.io/React-Inventory-frontend/', 'https://muhammadalics.github.io']
 var corsOptions = {
@@ -16,21 +16,22 @@ var corsOptions = {
     }
   }
 }
+//comment this in DEV ^^^^
 
 
 const app = express();
 // Then pass them to cors:
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); //comment this in dev
 
-// app.use(cors());
+
 
 
 
 
 
 const mongoose = require('mongoose');
-const url = "mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority"
-// const url = "mongodb://localhost/"
+const url = "mongodb+srv://testuser404:404400200@cluster0.us3q5.mongodb.net/wild-fjord?retryWrites=true&w=majority" //comment this in DEV
+// const url = "mongodb://localhost/" //use this in DEV
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 const con = mongoose.connection
 con.on('open', () => { console.log('connected!') })
